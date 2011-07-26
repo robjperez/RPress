@@ -1,0 +1,5 @@
+Very simple sinatra-based Wiki-Style CMS
+
+You can aggregate different files using a special syntax
+
+In the index page you get your most recent accesed notes
