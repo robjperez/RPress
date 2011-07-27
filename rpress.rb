@@ -17,6 +17,16 @@ get '/' do
 end
 
 get '/:notename' do
-  note = merge_content params[:notename]
-  haml :view_note, :locals => { :content => note }
+  if params[:notename].end_with? '.rp' then
+    note = merge_content params[:notename]
+    haml :view_note, :locals => { :content => note, :note_title => params[:notename] }
+  end
+end
+
+post '/:notename' do
+  if params[:notename].end_with? '.rp' then
+    save_content params[:notename], params[:note_content]
+
+    redirect '/'
+  end
 end

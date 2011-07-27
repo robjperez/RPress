@@ -8,3 +8,9 @@ def merge_content filename
     end
   end.join
 end
+
+def save_content note_name, note_content
+  File.open "./docs/#{note_name}", "w" do |f|
+    f.write note_content
+  end
+end

@@ -1,2 +1,4 @@
-%body
-  ="Files: #{files}"
+%ul
+  - files.each do |file|
+    %li
+      %a{:href => "#{file}"} #{file} 
