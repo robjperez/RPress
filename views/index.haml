@@ -1,4 +1,9 @@
-%ul
-  - files.each do |file|
-    %li
-      %a{:href => "#{file}"} #{file} 
+%div{:id => 'note_list'}
+  %ul
+    - files.each do |file|
+      %li
+        %a{:href => "/note/#{file}/view"} #{file}
+        %a{:href => "/note/#{file}/delete"}
+          %img{:src => "delete.jpg", :width => "16", :height => "16"}
+
+  %a{:href => "/note/new"} Add note

@@ -1,6 +1,9 @@
 %html
   %head
     %title RPress
+    %script{:type => 'text/javascript',
+            :src  => 'jquery-1.6.2.min.js'}
   %body
-    %p Site Content
+    %div{:id => 'header'} 
+      %h1 Your Notebook
     =yield

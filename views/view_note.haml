@@ -1,6 +1,5 @@
 %h1= note_title
-%form{:action => "#{note_title}", :method => 'POST'}
+%form{:action => "/note/#{note_title}/save", :method => 'POST'}
   %textarea{:cols => 40, :rows => 20, :name => 'note_content'}
     =content
   %input{:type => 'submit', :value => 'Save'}
-

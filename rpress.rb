@@ -16,17 +16,21 @@ get '/' do
   haml :index, :locals => { :files => files }
 end
 
-get '/:notename' do
-  if params[:notename].end_with? '.rp' then
-    note = merge_content params[:notename]
-    haml :view_note, :locals => { :content => note, :note_title => params[:notename] }
-  end
+get '/note/*.rp/view' do |note_name|
+  note = merge_content "#{note_name}.rp"
+  haml :view_note, :locals => { :content => note, :note_title => "#{note_name}.rp" }
 end
 
-post '/:notename' do
-  if params[:notename].end_with? '.rp' then
-    save_content params[:notename], params[:note_content]
+get '/note/new' do
+  new_note_name = "note_#{Time.now.strftime '%Y%m%d_%H%M%S'}.rp"
+  haml :view_note, :locals => { :content => "", :note_title => new_note_name }
+end
 
-    redirect '/'
-  end
+post '/note/*.rp/save' do |note_name|
+  save_content "#{note_name}.rp", params[:note_content]
+  redirect '/'
+end
+
+get '/note/*.rp/delete' do |note_name|
+  
 end
